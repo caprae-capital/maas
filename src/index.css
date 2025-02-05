@@ -1,0 +1,73 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@keyframes slide-up {
+  from {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.animate-slide-up {
+  animation: slide-up 0.3s ease-out;
+}
+
+/* Light theme */
+:root {
+  --color-background: #f8fafc;
+  --color-surface: #ffffff;
+  --color-surface-hover: #f1f5f9;
+  --color-border: #e2e8f0;
+  --color-text: #0f172a;
+  --color-text-secondary: #475569;
+}
+
+/* Dark theme */
+:root.dark {
+  --color-background: #0f172a;
+  --color-surface: #1e293b;
+  --color-surface-hover: #334155;
+  --color-border: #334155;
+  --color-text: #f8fafc;
+  --color-text-secondary: #cbd5e1;
+}
+
+/* Apply theme to base elements */
+body {
+  @apply bg-gradient-to-br from-indigo-50 via-slate-50 to-slate-50 dark:from-slate-900 dark:via-slate-900 dark:to-slate-800;
+  color: var(--color-text);
+}
+
+/* Custom component styles */
+.card {
+  @apply bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm border border-slate-200/60 dark:border-slate-700/60 shadow-lg shadow-indigo-500/5 rounded-xl;
+}
+
+.input {
+  @apply bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm border border-slate-200 dark:border-slate-700 text-slate-900 dark:text-white rounded-lg px-4 py-2 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 focus:outline-none transition-all duration-200;
+}
+
+.button-primary {
+  @apply bg-indigo-600 text-white hover:bg-indigo-700 transition-all duration-200 shadow-lg shadow-indigo-500/20 hover:shadow-indigo-500/30;
+}
+
+.button-secondary {
+  @apply bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-700 transition-all duration-200 shadow-sm hover:shadow-md;
+}
+
+.sidebar {
+  @apply bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm border-r border-slate-200/60 dark:border-slate-700/60;
+}
+
+.nav-item {
+  @apply text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-indigo-50/50 dark:hover:bg-slate-700/50;
+}
+
+.nav-item-active {
+  @apply text-indigo-600 dark:text-indigo-400 bg-indigo-50 dark:bg-indigo-900/30 shadow-sm ring-1 ring-indigo-100 dark:ring-indigo-800;
+}
