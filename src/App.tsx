@@ -4,6 +4,7 @@ import LandingPage from './pages/LandingPage';
 import LoginPage from './pages/LoginPage';
 import SignupPage from './pages/SignupPage';
 import SellerQuestionnaire from './pages/SellerQuestionnaire';
+import BuyerQuestionnaire from './pages/BuyerQuestionnaire';
 import Dashboard from './pages/Dashboard';
 import { useAuth } from './hooks/useAuth';
 import { ThemeProvider } from './contexts/ThemeContext';
@@ -18,10 +19,8 @@ function App() {
           <Route path="/" element={<LandingPage />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/signup" element={<SignupPage />} />
-          <Route
-            path="/seller-questionnaire"
-            element={isAuthenticated ? <SellerQuestionnaire /> : <Navigate to="/login" />}
-          />
+          <Route path="/seller-questionnaire" element={<SellerQuestionnaire />} />
+          <Route path="/buyer-questionnaire" element={<BuyerQuestionnaire />} />
           <Route
             path="/app/*"
             element={isAuthenticated ? <Dashboard /> : <Navigate to="/login" />}

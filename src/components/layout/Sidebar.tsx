@@ -16,13 +16,26 @@ export function Sidebar({ onLogout }: SidebarProps) {
 
   const isActive = (path: string) => location.pathname.includes(path);
 
-  const navItems = [
-    { icon: <Users className="h-5 w-5" />, label: "Matches", path: "matches" },
-    { icon: <ClipboardList className="h-5 w-5" />, label: "Deal Room", path: "deals" },
-    { icon: <Wrench className="h-5 w-5" />, label: "Tools", path: "tools" },
-    { icon: <Settings className="h-5 w-5" />, label: "Settings", path: "settings" },
-    { icon: <LogOut className="h-5 w-5" />, label: "Logout", path: "logout", onClick: onLogout }
-  ];
+  const getNavItems = () => {
+    const commonItems = [
+      { icon: <ClipboardList className="h-5 w-5" />, label: "Deal Room", path: "deals" },
+      { icon: <Wrench className="h-5 w-5" />, label: "Tools", path: "tools" },
+      { icon: <Settings className="h-5 w-5" />, label: "Settings", path: "settings" },
+      { icon: <LogOut className="h-5 w-5" />, label: "Logout", path: "logout", onClick: onLogout }
+    ];
+
+    // Only show Matches tab for sellers
+    if (userProfile?.userType === 'seller') {
+      return [
+        { icon: <Users className="h-5 w-5" />, label: "Matches", path: "matches" },
+        ...commonItems
+      ];
+    }
+
+    return commonItems;
+  };
+
+  const navItems = getNavItems();
 
   return (
     <div className="w-64 bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm border-r border-slate-200/60 dark:border-slate-700/60 flex-shrink-0 sticky top-0 h-screen">
@@ -49,6 +62,7 @@ export function Sidebar({ onLogout }: SidebarProps) {
             </div>
             <div className="text-left">
               <div className="text-slate-900 dark:text-white font-medium">{userProfile?.name}</div>
+              <div className="text-sm text-slate-500 dark:text-slate-400 capitalize">{userProfile?.userType}</div>
             </div>
           </button>
         </div>

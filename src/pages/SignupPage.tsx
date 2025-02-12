@@ -26,7 +26,7 @@ export default function SignupPage() {
       if (userType === 'seller') {
         navigate('/seller-questionnaire');
       } else {
-        navigate('/app/matches');
+        navigate('/buyer-questionnaire');
       }
     } catch (err) {
       if (err instanceof Error) {
