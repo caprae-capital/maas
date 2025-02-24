@@ -1,0 +1,16 @@
+<p style="color: green"><%= notice %></p>
+
+<% content_for :title, "Management styles" %>
+
+<h1>Management styles</h1>
+
+<div id="management_styles">
+  <% @management_styles.each do |management_style| %>
+    <%= render management_style %>
+    <p>
+      <%= link_to "Show this management style", management_style %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New management style", new_management_style_path %>

@@ -1,0 +1,12 @@
+<% content_for :title, "Editing management style" %>
+
+<h1>Editing management style</h1>
+
+<%= render "form", management_style: @management_style %>
+
+<br>
+
+<div>
+  <%= link_to "Show this management style", @management_style %> |
+  <%= link_to "Back to management styles", management_styles_path %>
+</div>

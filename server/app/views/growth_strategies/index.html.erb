@@ -1,0 +1,16 @@
+<p style="color: green"><%= notice %></p>
+
+<% content_for :title, "Growth strategies" %>
+
+<h1>Growth strategies</h1>
+
+<div id="growth_strategies">
+  <% @growth_strategies.each do |growth_strategy| %>
+    <%= render growth_strategy %>
+    <p>
+      <%= link_to "Show this growth strategy", growth_strategy %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New growth strategy", new_growth_strategy_path %>

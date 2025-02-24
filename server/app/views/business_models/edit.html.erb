@@ -1,0 +1,12 @@
+<% content_for :title, "Editing business model" %>
+
+<h1>Editing business model</h1>
+
+<%= render "form", business_model: @business_model %>
+
+<br>
+
+<div>
+  <%= link_to "Show this business model", @business_model %> |
+  <%= link_to "Back to business models", business_models_path %>
+</div>

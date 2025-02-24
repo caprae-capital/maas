@@ -1,0 +1,16 @@
+<p style="color: green"><%= notice %></p>
+
+<% content_for :title, "Business models" %>
+
+<h1>Business models</h1>
+
+<div id="business_models">
+  <% @business_models.each do |business_model| %>
+    <%= render business_model %>
+    <p>
+      <%= link_to "Show this business model", business_model %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New business model", new_business_model_path %>

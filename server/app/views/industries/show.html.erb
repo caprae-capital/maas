@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @industry %>
+
+<div>
+  <%= link_to "Edit this industry", edit_industry_path(@industry) %> |
+  <%= link_to "Back to industries", industries_path %>
+
+  <%= button_to "Destroy this industry", @industry, method: :delete %>
+</div>

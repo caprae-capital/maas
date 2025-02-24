@@ -1,0 +1,16 @@
+<p style="color: green"><%= notice %></p>
+
+<% content_for :title, "Preferred work cultures" %>
+
+<h1>Preferred work cultures</h1>
+
+<div id="preferred_work_cultures">
+  <% @preferred_work_cultures.each do |preferred_work_culture| %>
+    <%= render preferred_work_culture %>
+    <p>
+      <%= link_to "Show this preferred work culture", preferred_work_culture %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New preferred work culture", new_preferred_work_culture_path %>

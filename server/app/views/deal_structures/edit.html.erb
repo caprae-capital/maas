@@ -1,0 +1,12 @@
+<% content_for :title, "Editing deal structure" %>
+
+<h1>Editing deal structure</h1>
+
+<%= render "form", deal_structure: @deal_structure %>
+
+<br>
+
+<div>
+  <%= link_to "Show this deal structure", @deal_structure %> |
+  <%= link_to "Back to deal structures", deal_structures_path %>
+</div>

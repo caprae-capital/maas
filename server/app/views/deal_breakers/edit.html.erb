@@ -1,0 +1,12 @@
+<% content_for :title, "Editing deal breaker" %>
+
+<h1>Editing deal breaker</h1>
+
+<%= render "form", deal_breaker: @deal_breaker %>
+
+<br>
+
+<div>
+  <%= link_to "Show this deal breaker", @deal_breaker %> |
+  <%= link_to "Back to deal breakers", deal_breakers_path %>
+</div>

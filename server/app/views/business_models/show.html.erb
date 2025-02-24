@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @business_model %>
+
+<div>
+  <%= link_to "Edit this business model", edit_business_model_path(@business_model) %> |
+  <%= link_to "Back to business models", business_models_path %>
+
+  <%= button_to "Destroy this business model", @business_model, method: :delete %>
+</div>
