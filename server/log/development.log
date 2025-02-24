@@ -1,0 +1,509 @@
+  [1m[35mSQL (0.1ms)[0m  [1m[35mSET search_path TO public /*application='MaasServer'*/[0m
+  [1m[35m (144.2ms)[0m  [1m[35mCREATE DATABASE "maas_server_development" ENCODING = 'unicode' /*application='MaasServer'*/[0m
+  [1m[35m (1.6ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY) /*application='MaasServer'*/[0m
+  [1m[35m (1.2ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL) /*application='MaasServer'*/[0m
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT pg_try_advisory_lock(7338183518448170220) /*application='MaasServer'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='MaasServer'*/[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = 'environment' ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1 /*application='MaasServer'*/[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.2ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ('environment', 'development', '2025-02-24 05:23:17.941536', '2025-02-24 05:23:17.941537') RETURNING "key" /*application='MaasServer'*/[0m
+Migrating to CreateDealStructures (20250224045430)
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT pg_advisory_unlock(7338183518448170220) /*application='MaasServer'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT pg_try_advisory_lock(7338183518448170220) /*application='MaasServer'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='MaasServer'*/[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.8ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = 'environment' ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1 /*application='MaasServer'*/[0m
+Migrating to CreateDealStructures (20250224045430)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='MaasServer'*/[0m
+  [1m[35m (8.0ms)[0m  [1m[35mCREATE TABLE "deal_structures" ("id" bigserial primary key, "name" character varying NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL) /*application='MaasServer'*/[0m
+  [1m[35m (0.6ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_deal_structures_on_name" ON "deal_structures" ("name") /*application='MaasServer'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20250224045430') RETURNING "version" /*application='MaasServer'*/[0m
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT /*application='MaasServer'*/[0m
+Migrating to CreateBusinessModels (20250224045603)
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN /*application='MaasServer'*/[0m
+  [1m[35m (3.8ms)[0m  [1m[35mCREATE TABLE "business_models" ("id" bigserial primary key, "name" character varying NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL) /*application='MaasServer'*/[0m
+  [1m[35m (0.7ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_business_models_on_name" ON "business_models" ("name") /*application='MaasServer'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20250224045603') RETURNING "version" /*application='MaasServer'*/[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT /*application='MaasServer'*/[0m
+Migrating to CreateUsers (20250224045812)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN /*application='MaasServer'*/[0m
+  [1m[35m (3.6ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "name" character varying, "email" character varying NOT NULL, "password_digest" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL) /*application='MaasServer'*/[0m
+  [1m[35m (0.7ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email") /*application='MaasServer'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20250224045812') RETURNING "version" /*application='MaasServer'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT /*application='MaasServer'*/[0m
+Migrating to CreateBuyers (20250224050609)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='MaasServer'*/[0m
+  [1m[35m (2.9ms)[0m  [1m[35mCREATE TABLE "buyers" ("id" bigserial primary key, "name" character varying NOT NULL, "location" character varying NOT NULL, "about_us" text NOT NULL, "investment_range_min" integer NOT NULL, "investment_range_max" integer NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL) /*application='MaasServer'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20250224050609') RETURNING "version" /*application='MaasServer'*/[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT /*application='MaasServer'*/[0m
+Migrating to CreateBuyerMembers (20250224050647)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='MaasServer'*/[0m
+  [1m[35m (6.8ms)[0m  [1m[35mCREATE TABLE "buyer_members" ("id" bigserial primary key, "buyer_id" bigint NOT NULL, "name" character varying NOT NULL, "role" character varying NOT NULL, "photo_url" character varying NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, CONSTRAINT "fk_rails_d08a171122"
+FOREIGN KEY ("buyer_id")
+  REFERENCES "buyers" ("id")
+) /*application='MaasServer'*/[0m
+  [1m[35m (0.7ms)[0m  [1m[35mCREATE INDEX "index_buyer_members_on_buyer_id" ON "buyer_members" ("buyer_id") /*application='MaasServer'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20250224050647') RETURNING "version" /*application='MaasServer'*/[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT /*application='MaasServer'*/[0m
+Migrating to CreateMatches (20250224051030)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN /*application='MaasServer'*/[0m
+  [1m[35m (3.6ms)[0m  [1m[35mCREATE TABLE "matches" ("id" bigserial primary key, "user_id" bigint NOT NULL, "buyer_id" bigint NOT NULL, "progress" character varying DEFAULT 'new' NOT NULL, "due_date" date NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, CONSTRAINT "fk_rails_1766d8a780"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+, CONSTRAINT "fk_rails_050d9a7d32"
+FOREIGN KEY ("buyer_id")
+  REFERENCES "buyers" ("id")
+) /*application='MaasServer'*/[0m
+  [1m[35m (0.9ms)[0m  [1m[35mCREATE INDEX "index_matches_on_user_id" ON "matches" ("user_id") /*application='MaasServer'*/[0m
+  [1m[35m (0.9ms)[0m  [1m[35mCREATE INDEX "index_matches_on_buyer_id" ON "matches" ("buyer_id") /*application='MaasServer'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20250224051030') RETURNING "version" /*application='MaasServer'*/[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT /*application='MaasServer'*/[0m
+Migrating to CreateDealTeamMembers (20250224051033)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN /*application='MaasServer'*/[0m
+  [1m[35m (4.5ms)[0m  [1m[35mCREATE TABLE "deal_team_members" ("id" bigserial primary key, "match_id" bigint NOT NULL, "name" character varying NOT NULL, "role" character varying NOT NULL, "photo_url" character varying NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, CONSTRAINT "fk_rails_499174287e"
+FOREIGN KEY ("match_id")
+  REFERENCES "matches" ("id")
+) /*application='MaasServer'*/[0m
+  [1m[35m (3.8ms)[0m  [1m[35mCREATE INDEX "index_deal_team_members_on_match_id" ON "deal_team_members" ("match_id") /*application='MaasServer'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20250224051033') RETURNING "version" /*application='MaasServer'*/[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT /*application='MaasServer'*/[0m
+Migrating to CreateInnovationStyles (20250224051229)
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN /*application='MaasServer'*/[0m
+  [1m[35m (3.5ms)[0m  [1m[35mCREATE TABLE "innovation_styles" ("id" bigserial primary key, "name" character varying NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL) /*application='MaasServer'*/[0m
+  [1m[35m (0.9ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_innovation_styles_on_name" ON "innovation_styles" ("name") /*application='MaasServer'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20250224051229') RETURNING "version" /*application='MaasServer'*/[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT /*application='MaasServer'*/[0m
+Migrating to CreateDecisionMakingStyles (20250224051237)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN /*application='MaasServer'*/[0m
+  [1m[35m (3.5ms)[0m  [1m[35mCREATE TABLE "decision_making_styles" ("id" bigserial primary key, "name" character varying NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL) /*application='MaasServer'*/[0m
+  [1m[35m (1.0ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_decision_making_styles_on_name" ON "decision_making_styles" ("name") /*application='MaasServer'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20250224051237') RETURNING "version" /*application='MaasServer'*/[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT /*application='MaasServer'*/[0m
+Migrating to CreateGrowthStrategies (20250224051257)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN /*application='MaasServer'*/[0m
+  [1m[35m (4.5ms)[0m  [1m[35mCREATE TABLE "growth_strategies" ("id" bigserial primary key, "name" character varying NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL) /*application='MaasServer'*/[0m
+  [1m[35m (1.0ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_growth_strategies_on_name" ON "growth_strategies" ("name") /*application='MaasServer'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20250224051257') RETURNING "version" /*application='MaasServer'*/[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT /*application='MaasServer'*/[0m
+Migrating to CreateManagementStyles (20250224051304)
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN /*application='MaasServer'*/[0m
+  [1m[35m (3.7ms)[0m  [1m[35mCREATE TABLE "management_styles" ("id" bigserial primary key, "name" character varying NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL) /*application='MaasServer'*/[0m
+  [1m[35m (0.9ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_management_styles_on_name" ON "management_styles" ("name") /*application='MaasServer'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20250224051304') RETURNING "version" /*application='MaasServer'*/[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT /*application='MaasServer'*/[0m
+Migrating to CreatePreferredWorkCultures (20250224051356)
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN /*application='MaasServer'*/[0m
+  [1m[35m (4.2ms)[0m  [1m[35mCREATE TABLE "preferred_work_cultures" ("id" bigserial primary key, "name" character varying NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL) /*application='MaasServer'*/[0m
+  [1m[35m (0.8ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_preferred_work_cultures_on_name" ON "preferred_work_cultures" ("name") /*application='MaasServer'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20250224051356') RETURNING "version" /*application='MaasServer'*/[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT /*application='MaasServer'*/[0m
+Migrating to CreateDealBreakers (20250224051410)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN /*application='MaasServer'*/[0m
+  [1m[35m (3.9ms)[0m  [1m[35mCREATE TABLE "deal_breakers" ("id" bigserial primary key, "name" character varying NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL) /*application='MaasServer'*/[0m
+  [1m[35m (1.6ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_deal_breakers_on_name" ON "deal_breakers" ("name") /*application='MaasServer'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20250224051410') RETURNING "version" /*application='MaasServer'*/[0m
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT /*application='MaasServer'*/[0m
+Migrating to CreateUserSettings (20250224051533)
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN /*application='MaasServer'*/[0m
+  [1m[35m (5.7ms)[0m  [1m[35mCREATE TABLE "user_settings" ("id" bigserial primary key, "user_id" bigint NOT NULL, "risk_tolerance" integer DEFAULT 0 NOT NULL, "innovation_style_id" bigint NOT NULL, "decision_making_style_id" bigint NOT NULL, "growth_strategy_id" bigint NOT NULL, "management_style_id" bigint NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, CONSTRAINT "fk_rails_d1371c6356"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+, CONSTRAINT "fk_rails_48a3ba4d48"
+FOREIGN KEY ("innovation_style_id")
+  REFERENCES "innovation_styles" ("id")
+, CONSTRAINT "fk_rails_d742e43816"
+FOREIGN KEY ("decision_making_style_id")
+  REFERENCES "decision_making_styles" ("id")
+, CONSTRAINT "fk_rails_64a4a92ced"
+FOREIGN KEY ("growth_strategy_id")
+  REFERENCES "growth_strategies" ("id")
+, CONSTRAINT "fk_rails_52b62944f1"
+FOREIGN KEY ("management_style_id")
+  REFERENCES "management_styles" ("id")
+) /*application='MaasServer'*/[0m
+  [1m[35m (1.5ms)[0m  [1m[35mCREATE INDEX "index_user_settings_on_user_id" ON "user_settings" ("user_id") /*application='MaasServer'*/[0m
+  [1m[35m (0.9ms)[0m  [1m[35mCREATE INDEX "index_user_settings_on_innovation_style_id" ON "user_settings" ("innovation_style_id") /*application='MaasServer'*/[0m
+  [1m[35m (0.7ms)[0m  [1m[35mCREATE INDEX "index_user_settings_on_decision_making_style_id" ON "user_settings" ("decision_making_style_id") /*application='MaasServer'*/[0m
+  [1m[35m (0.8ms)[0m  [1m[35mCREATE INDEX "index_user_settings_on_growth_strategy_id" ON "user_settings" ("growth_strategy_id") /*application='MaasServer'*/[0m
+  [1m[35m (0.6ms)[0m  [1m[35mCREATE INDEX "index_user_settings_on_management_style_id" ON "user_settings" ("management_style_id") /*application='MaasServer'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20250224051533') RETURNING "version" /*application='MaasServer'*/[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT /*application='MaasServer'*/[0m
+Migrating to CreateUserPreferredWorkCultures (20250224051555)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='MaasServer'*/[0m
+  [1m[35m (3.5ms)[0m  [1m[35mCREATE TABLE "user_preferred_work_cultures" ("id" bigserial primary key, "user_id" bigint NOT NULL, "preferred_work_culture_id" bigint NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, CONSTRAINT "fk_rails_6b7dc235a2"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+, CONSTRAINT "fk_rails_a320e258fa"
+FOREIGN KEY ("preferred_work_culture_id")
+  REFERENCES "preferred_work_cultures" ("id")
+) /*application='MaasServer'*/[0m
+  [1m[35m (0.9ms)[0m  [1m[35mCREATE INDEX "index_user_preferred_work_cultures_on_user_id" ON "user_preferred_work_cultures" ("user_id") /*application='MaasServer'*/[0m
+  [1m[35m (1.2ms)[0m  [1m[35mCREATE INDEX "idx_on_preferred_work_culture_id_dfdfedcffa" ON "user_preferred_work_cultures" ("preferred_work_culture_id") /*application='MaasServer'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20250224051555') RETURNING "version" /*application='MaasServer'*/[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT /*application='MaasServer'*/[0m
+Migrating to CreateUserDealBreakers (20250224051614)
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN /*application='MaasServer'*/[0m
+  [1m[35m (4.3ms)[0m  [1m[35mCREATE TABLE "user_deal_breakers" ("id" bigserial primary key, "user_id" bigint NOT NULL, "deal_breaker_id" bigint NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, CONSTRAINT "fk_rails_abcc202ed1"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+, CONSTRAINT "fk_rails_4b6b45250d"
+FOREIGN KEY ("deal_breaker_id")
+  REFERENCES "deal_breakers" ("id")
+) /*application='MaasServer'*/[0m
+  [1m[35m (1.6ms)[0m  [1m[35mCREATE INDEX "index_user_deal_breakers_on_user_id" ON "user_deal_breakers" ("user_id") /*application='MaasServer'*/[0m
+  [1m[35m (1.0ms)[0m  [1m[35mCREATE INDEX "index_user_deal_breakers_on_deal_breaker_id" ON "user_deal_breakers" ("deal_breaker_id") /*application='MaasServer'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20250224051614') RETURNING "version" /*application='MaasServer'*/[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT /*application='MaasServer'*/[0m
+Migrating to CreateIndustries (20250224051747)
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN /*application='MaasServer'*/[0m
+  [1m[35m (4.9ms)[0m  [1m[35mCREATE TABLE "industries" ("id" bigserial primary key, "name" character varying NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL) /*application='MaasServer'*/[0m
+  [1m[35m (1.4ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_industries_on_name" ON "industries" ("name") /*application='MaasServer'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20250224051747') RETURNING "version" /*application='MaasServer'*/[0m
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT /*application='MaasServer'*/[0m
+Migrating to CreateBuyerTargetIndustries (20250224051816)
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN /*application='MaasServer'*/[0m
+  [1m[35m (4.2ms)[0m  [1m[35mCREATE TABLE "buyer_target_industries" ("id" bigserial primary key, "buyer_id" bigint NOT NULL, "industry_id" bigint NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, CONSTRAINT "fk_rails_ae483b9d31"
+FOREIGN KEY ("buyer_id")
+  REFERENCES "buyers" ("id")
+, CONSTRAINT "fk_rails_b9ff56c9c0"
+FOREIGN KEY ("industry_id")
+  REFERENCES "industries" ("id")
+) /*application='MaasServer'*/[0m
+  [1m[35m (0.8ms)[0m  [1m[35mCREATE INDEX "index_buyer_target_industries_on_buyer_id" ON "buyer_target_industries" ("buyer_id") /*application='MaasServer'*/[0m
+  [1m[35m (1.0ms)[0m  [1m[35mCREATE INDEX "index_buyer_target_industries_on_industry_id" ON "buyer_target_industries" ("industry_id") /*application='MaasServer'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20250224051816') RETURNING "version" /*application='MaasServer'*/[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT /*application='MaasServer'*/[0m
+Migrating to CreateUserDetails (20250224051924)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN /*application='MaasServer'*/[0m
+  [1m[35m (4.6ms)[0m  [1m[35mCREATE TABLE "user_details" ("id" bigserial primary key, "user_id" bigint NOT NULL, "business_name" character varying NOT NULL, "industry_id" bigint NOT NULL, "annual_revenue" character varying, "number_of_employees" integer, "location" character varying, "business_description" text, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, CONSTRAINT "fk_rails_12e0b3043d"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+, CONSTRAINT "fk_rails_777ad89e0c"
+FOREIGN KEY ("industry_id")
+  REFERENCES "industries" ("id")
+) /*application='MaasServer'*/[0m
+  [1m[35m (1.1ms)[0m  [1m[35mCREATE INDEX "index_user_details_on_user_id" ON "user_details" ("user_id") /*application='MaasServer'*/[0m
+  [1m[35m (0.8ms)[0m  [1m[35mCREATE INDEX "index_user_details_on_industry_id" ON "user_details" ("industry_id") /*application='MaasServer'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20250224051924') RETURNING "version" /*application='MaasServer'*/[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT /*application='MaasServer'*/[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT pg_advisory_unlock(7338183518448170220) /*application='MaasServer'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='MaasServer'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT pg_try_advisory_lock(7338183518448170220) /*application='MaasServer'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='MaasServer'*/[0m
+  [1m[36mActiveRecord::InternalMetadata Load (1.0ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = 'environment' ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1 /*application='MaasServer'*/[0m
+Migrating to CreateUserSessions (20250224053431)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='MaasServer'*/[0m
+  [1m[35m (8.7ms)[0m  [1m[35mCREATE TABLE "user_sessions" ("id" bigserial primary key, "user_id" bigint NOT NULL, "token" character varying NOT NULL, "expires_at" timestamp(6) NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, CONSTRAINT "fk_rails_9fa262d742"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+) /*application='MaasServer'*/[0m
+  [1m[35m (0.7ms)[0m  [1m[35mCREATE INDEX "index_user_sessions_on_user_id" ON "user_sessions" ("user_id") /*application='MaasServer'*/[0m
+  [1m[35m (0.6ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_user_sessions_on_token" ON "user_sessions" ("token") /*application='MaasServer'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20250224053431') RETURNING "version" /*application='MaasServer'*/[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT /*application='MaasServer'*/[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_advisory_unlock(7338183518448170220) /*application='MaasServer'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='MaasServer'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='MaasServer'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='MaasServer'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='MaasServer'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT pg_try_advisory_lock(7338183518448170220) /*application='MaasServer'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='MaasServer'*/[0m
+Migrating to CreateUserSessions (20250224053431)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='MaasServer'*/[0m
+  [1m[35m (0.5ms)[0m  [1m[35mDROP INDEX  "index_user_sessions_on_token" /*application='MaasServer'*/[0m
+  [1m[35m (1.3ms)[0m  [1m[35mDROP TABLE "user_sessions" /*application='MaasServer'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Destroy (0.4ms)[0m  [1m[31mDELETE FROM "schema_migrations" WHERE "schema_migrations"."version" = '20250224053431' /*application='MaasServer'*/[0m
+  [1m[36mTRANSACTION (35.7ms)[0m  [1m[35mCOMMIT /*application='MaasServer'*/[0m
+Migrating to CreateUserDetails (20250224051924)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='MaasServer'*/[0m
+  [1m[35m (0.8ms)[0m  [1m[35mDROP TABLE "user_details" /*application='MaasServer'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Destroy (0.1ms)[0m  [1m[31mDELETE FROM "schema_migrations" WHERE "schema_migrations"."version" = '20250224051924' /*application='MaasServer'*/[0m
+  [1m[36mTRANSACTION (16.9ms)[0m  [1m[35mCOMMIT /*application='MaasServer'*/[0m
+Migrating to CreateBuyerTargetIndustries (20250224051816)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='MaasServer'*/[0m
+  [1m[35m (1.0ms)[0m  [1m[35mDROP TABLE "buyer_target_industries" /*application='MaasServer'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Destroy (0.1ms)[0m  [1m[31mDELETE FROM "schema_migrations" WHERE "schema_migrations"."version" = '20250224051816' /*application='MaasServer'*/[0m
+  [1m[36mTRANSACTION (6.3ms)[0m  [1m[35mCOMMIT /*application='MaasServer'*/[0m
+Migrating to CreateIndustries (20250224051747)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN /*application='MaasServer'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP INDEX  "index_industries_on_name" /*application='MaasServer'*/[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE "industries" /*application='MaasServer'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Destroy (0.0ms)[0m  [1m[31mDELETE FROM "schema_migrations" WHERE "schema_migrations"."version" = '20250224051747' /*application='MaasServer'*/[0m
+  [1m[36mTRANSACTION (8.4ms)[0m  [1m[35mCOMMIT /*application='MaasServer'*/[0m
+Migrating to CreateUserDealBreakers (20250224051614)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN /*application='MaasServer'*/[0m
+  [1m[35m (1.5ms)[0m  [1m[35mDROP TABLE "user_deal_breakers" /*application='MaasServer'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Destroy (0.1ms)[0m  [1m[31mDELETE FROM "schema_migrations" WHERE "schema_migrations"."version" = '20250224051614' /*application='MaasServer'*/[0m
+  [1m[36mTRANSACTION (6.8ms)[0m  [1m[35mCOMMIT /*application='MaasServer'*/[0m
+Migrating to CreateUserPreferredWorkCultures (20250224051555)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN /*application='MaasServer'*/[0m
+  [1m[35m (1.5ms)[0m  [1m[35mDROP TABLE "user_preferred_work_cultures" /*application='MaasServer'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Destroy (0.1ms)[0m  [1m[31mDELETE FROM "schema_migrations" WHERE "schema_migrations"."version" = '20250224051555' /*application='MaasServer'*/[0m
+  [1m[36mTRANSACTION (6.0ms)[0m  [1m[35mCOMMIT /*application='MaasServer'*/[0m
+Migrating to CreateUserSettings (20250224051533)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='MaasServer'*/[0m
+  [1m[35m (3.6ms)[0m  [1m[35mDROP TABLE "user_settings" /*application='MaasServer'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Destroy (0.1ms)[0m  [1m[31mDELETE FROM "schema_migrations" WHERE "schema_migrations"."version" = '20250224051533' /*application='MaasServer'*/[0m
+  [1m[36mTRANSACTION (11.7ms)[0m  [1m[35mCOMMIT /*application='MaasServer'*/[0m
+Migrating to CreateDealBreakers (20250224051410)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN /*application='MaasServer'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP INDEX  "index_deal_breakers_on_name" /*application='MaasServer'*/[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE "deal_breakers" /*application='MaasServer'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Destroy (0.0ms)[0m  [1m[31mDELETE FROM "schema_migrations" WHERE "schema_migrations"."version" = '20250224051410' /*application='MaasServer'*/[0m
+  [1m[36mTRANSACTION (9.2ms)[0m  [1m[35mCOMMIT /*application='MaasServer'*/[0m
+Migrating to CreatePreferredWorkCultures (20250224051356)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN /*application='MaasServer'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP INDEX  "index_preferred_work_cultures_on_name" /*application='MaasServer'*/[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE "preferred_work_cultures" /*application='MaasServer'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Destroy (0.0ms)[0m  [1m[31mDELETE FROM "schema_migrations" WHERE "schema_migrations"."version" = '20250224051356' /*application='MaasServer'*/[0m
+  [1m[36mTRANSACTION (8.8ms)[0m  [1m[35mCOMMIT /*application='MaasServer'*/[0m
+Migrating to CreateManagementStyles (20250224051304)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN /*application='MaasServer'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP INDEX  "index_management_styles_on_name" /*application='MaasServer'*/[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE "management_styles" /*application='MaasServer'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Destroy (0.0ms)[0m  [1m[31mDELETE FROM "schema_migrations" WHERE "schema_migrations"."version" = '20250224051304' /*application='MaasServer'*/[0m
+  [1m[36mTRANSACTION (7.3ms)[0m  [1m[35mCOMMIT /*application='MaasServer'*/[0m
+Migrating to CreateGrowthStrategies (20250224051257)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN /*application='MaasServer'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP INDEX  "index_growth_strategies_on_name" /*application='MaasServer'*/[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE "growth_strategies" /*application='MaasServer'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Destroy (0.0ms)[0m  [1m[31mDELETE FROM "schema_migrations" WHERE "schema_migrations"."version" = '20250224051257' /*application='MaasServer'*/[0m
+  [1m[36mTRANSACTION (8.6ms)[0m  [1m[35mCOMMIT /*application='MaasServer'*/[0m
+Migrating to CreateDecisionMakingStyles (20250224051237)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN /*application='MaasServer'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP INDEX  "index_decision_making_styles_on_name" /*application='MaasServer'*/[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE "decision_making_styles" /*application='MaasServer'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Destroy (0.0ms)[0m  [1m[31mDELETE FROM "schema_migrations" WHERE "schema_migrations"."version" = '20250224051237' /*application='MaasServer'*/[0m
+  [1m[36mTRANSACTION (6.7ms)[0m  [1m[35mCOMMIT /*application='MaasServer'*/[0m
+Migrating to CreateInnovationStyles (20250224051229)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN /*application='MaasServer'*/[0m
+  [1m[35m (0.0ms)[0m  [1m[35mDROP INDEX  "index_innovation_styles_on_name" /*application='MaasServer'*/[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE "innovation_styles" /*application='MaasServer'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Destroy (0.0ms)[0m  [1m[31mDELETE FROM "schema_migrations" WHERE "schema_migrations"."version" = '20250224051229' /*application='MaasServer'*/[0m
+  [1m[36mTRANSACTION (6.5ms)[0m  [1m[35mCOMMIT /*application='MaasServer'*/[0m
+Migrating to CreateDealTeamMembers (20250224051033)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN /*application='MaasServer'*/[0m
+  [1m[35m (0.6ms)[0m  [1m[35mDROP TABLE "deal_team_members" /*application='MaasServer'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Destroy (0.0ms)[0m  [1m[31mDELETE FROM "schema_migrations" WHERE "schema_migrations"."version" = '20250224051033' /*application='MaasServer'*/[0m
+  [1m[36mTRANSACTION (7.8ms)[0m  [1m[35mCOMMIT /*application='MaasServer'*/[0m
+Migrating to CreateMatches (20250224051030)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN /*application='MaasServer'*/[0m
+  [1m[35m (0.6ms)[0m  [1m[35mDROP TABLE "matches" /*application='MaasServer'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Destroy (0.0ms)[0m  [1m[31mDELETE FROM "schema_migrations" WHERE "schema_migrations"."version" = '20250224051030' /*application='MaasServer'*/[0m
+  [1m[36mTRANSACTION (8.3ms)[0m  [1m[35mCOMMIT /*application='MaasServer'*/[0m
+Migrating to CreateBuyerMembers (20250224050647)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN /*application='MaasServer'*/[0m
+  [1m[35m (0.5ms)[0m  [1m[35mDROP TABLE "buyer_members" /*application='MaasServer'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Destroy (0.0ms)[0m  [1m[31mDELETE FROM "schema_migrations" WHERE "schema_migrations"."version" = '20250224050647' /*application='MaasServer'*/[0m
+  [1m[36mTRANSACTION (6.0ms)[0m  [1m[35mCOMMIT /*application='MaasServer'*/[0m
+Migrating to CreateBuyers (20250224050609)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN /*application='MaasServer'*/[0m
+  [1m[35m (0.5ms)[0m  [1m[35mDROP TABLE "buyers" /*application='MaasServer'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Destroy (0.1ms)[0m  [1m[31mDELETE FROM "schema_migrations" WHERE "schema_migrations"."version" = '20250224050609' /*application='MaasServer'*/[0m
+  [1m[36mTRANSACTION (4.9ms)[0m  [1m[35mCOMMIT /*application='MaasServer'*/[0m
+Migrating to CreateUsers (20250224045812)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN /*application='MaasServer'*/[0m
+  [1m[35m (0.0ms)[0m  [1m[35mDROP INDEX  "index_users_on_email" /*application='MaasServer'*/[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE "users" /*application='MaasServer'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Destroy (0.0ms)[0m  [1m[31mDELETE FROM "schema_migrations" WHERE "schema_migrations"."version" = '20250224045812' /*application='MaasServer'*/[0m
+  [1m[36mTRANSACTION (6.0ms)[0m  [1m[35mCOMMIT /*application='MaasServer'*/[0m
+Migrating to CreateBusinessModels (20250224045603)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN /*application='MaasServer'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP INDEX  "index_business_models_on_name" /*application='MaasServer'*/[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE "business_models" /*application='MaasServer'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Destroy (0.0ms)[0m  [1m[31mDELETE FROM "schema_migrations" WHERE "schema_migrations"."version" = '20250224045603' /*application='MaasServer'*/[0m
+  [1m[36mTRANSACTION (6.4ms)[0m  [1m[35mCOMMIT /*application='MaasServer'*/[0m
+Migrating to CreateDealStructures (20250224045430)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN /*application='MaasServer'*/[0m
+  [1m[35m (0.0ms)[0m  [1m[35mDROP INDEX  "index_deal_structures_on_name" /*application='MaasServer'*/[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE "deal_structures" /*application='MaasServer'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Destroy (0.0ms)[0m  [1m[31mDELETE FROM "schema_migrations" WHERE "schema_migrations"."version" = '20250224045430' /*application='MaasServer'*/[0m
+  [1m[36mTRANSACTION (6.3ms)[0m  [1m[35mCOMMIT /*application='MaasServer'*/[0m
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT pg_advisory_unlock(7338183518448170220) /*application='MaasServer'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='MaasServer'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT pg_try_advisory_lock(7338183518448170220) /*application='MaasServer'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='MaasServer'*/[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.8ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = 'environment' ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1 /*application='MaasServer'*/[0m
+Migrating to CreateDealStructures (20250224045430)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='MaasServer'*/[0m
+  [1m[35m (7.8ms)[0m  [1m[35mCREATE TABLE "deal_structures" ("id" bigserial primary key, "name" character varying NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL) /*application='MaasServer'*/[0m
+  [1m[35m (1.1ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_deal_structures_on_name" ON "deal_structures" ("name") /*application='MaasServer'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20250224045430') RETURNING "version" /*application='MaasServer'*/[0m
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mCOMMIT /*application='MaasServer'*/[0m
+Migrating to CreateBusinessModels (20250224045603)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN /*application='MaasServer'*/[0m
+  [1m[35m (3.1ms)[0m  [1m[35mCREATE TABLE "business_models" ("id" bigserial primary key, "name" character varying NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL) /*application='MaasServer'*/[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_business_models_on_name" ON "business_models" ("name") /*application='MaasServer'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20250224045603') RETURNING "version" /*application='MaasServer'*/[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT /*application='MaasServer'*/[0m
+Migrating to CreateUsers (20250224045812)
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN /*application='MaasServer'*/[0m
+  [1m[35m (2.9ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "name" character varying, "email" character varying NOT NULL, "password_digest" character varying, "role" character varying DEFAULT 'none' NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL) /*application='MaasServer'*/[0m
+  [1m[35m (1.3ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email") /*application='MaasServer'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20250224045812') RETURNING "version" /*application='MaasServer'*/[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT /*application='MaasServer'*/[0m
+Migrating to CreateBuyers (20250224050609)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN /*application='MaasServer'*/[0m
+  [1m[35m (3.6ms)[0m  [1m[35mCREATE TABLE "buyers" ("id" bigserial primary key, "name" character varying NOT NULL, "location" character varying NOT NULL, "about_us" text NOT NULL, "investment_range_min" integer NOT NULL, "investment_range_max" integer NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL) /*application='MaasServer'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20250224050609') RETURNING "version" /*application='MaasServer'*/[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT /*application='MaasServer'*/[0m
+Migrating to CreateBuyerMembers (20250224050647)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN /*application='MaasServer'*/[0m
+  [1m[35m (8.9ms)[0m  [1m[35mCREATE TABLE "buyer_members" ("id" bigserial primary key, "buyer_id" bigint NOT NULL, "name" character varying NOT NULL, "role" character varying NOT NULL, "photo_url" character varying NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, CONSTRAINT "fk_rails_d08a171122"
+FOREIGN KEY ("buyer_id")
+  REFERENCES "buyers" ("id")
+) /*application='MaasServer'*/[0m
+  [1m[35m (1.0ms)[0m  [1m[35mCREATE INDEX "index_buyer_members_on_buyer_id" ON "buyer_members" ("buyer_id") /*application='MaasServer'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20250224050647') RETURNING "version" /*application='MaasServer'*/[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT /*application='MaasServer'*/[0m
+Migrating to CreateMatches (20250224051030)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN /*application='MaasServer'*/[0m
+  [1m[35m (3.7ms)[0m  [1m[35mCREATE TABLE "matches" ("id" bigserial primary key, "user_id" bigint NOT NULL, "buyer_id" bigint NOT NULL, "progress" character varying DEFAULT 'new' NOT NULL, "due_date" date NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, CONSTRAINT "fk_rails_1766d8a780"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+, CONSTRAINT "fk_rails_050d9a7d32"
+FOREIGN KEY ("buyer_id")
+  REFERENCES "buyers" ("id")
+) /*application='MaasServer'*/[0m
+  [1m[35m (0.6ms)[0m  [1m[35mCREATE INDEX "index_matches_on_user_id" ON "matches" ("user_id") /*application='MaasServer'*/[0m
+  [1m[35m (0.6ms)[0m  [1m[35mCREATE INDEX "index_matches_on_buyer_id" ON "matches" ("buyer_id") /*application='MaasServer'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20250224051030') RETURNING "version" /*application='MaasServer'*/[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT /*application='MaasServer'*/[0m
+Migrating to CreateDealTeamMembers (20250224051033)
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN /*application='MaasServer'*/[0m
+  [1m[35m (3.7ms)[0m  [1m[35mCREATE TABLE "deal_team_members" ("id" bigserial primary key, "match_id" bigint NOT NULL, "name" character varying NOT NULL, "role" character varying NOT NULL, "photo_url" character varying NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, CONSTRAINT "fk_rails_499174287e"
+FOREIGN KEY ("match_id")
+  REFERENCES "matches" ("id")
+) /*application='MaasServer'*/[0m
+  [1m[35m (0.6ms)[0m  [1m[35mCREATE INDEX "index_deal_team_members_on_match_id" ON "deal_team_members" ("match_id") /*application='MaasServer'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20250224051033') RETURNING "version" /*application='MaasServer'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT /*application='MaasServer'*/[0m
+Migrating to CreateInnovationStyles (20250224051229)
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN /*application='MaasServer'*/[0m
+  [1m[35m (3.8ms)[0m  [1m[35mCREATE TABLE "innovation_styles" ("id" bigserial primary key, "name" character varying NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL) /*application='MaasServer'*/[0m
+  [1m[35m (0.7ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_innovation_styles_on_name" ON "innovation_styles" ("name") /*application='MaasServer'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20250224051229') RETURNING "version" /*application='MaasServer'*/[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT /*application='MaasServer'*/[0m
+Migrating to CreateDecisionMakingStyles (20250224051237)
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN /*application='MaasServer'*/[0m
+  [1m[35m (2.7ms)[0m  [1m[35mCREATE TABLE "decision_making_styles" ("id" bigserial primary key, "name" character varying NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL) /*application='MaasServer'*/[0m
+  [1m[35m (0.9ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_decision_making_styles_on_name" ON "decision_making_styles" ("name") /*application='MaasServer'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20250224051237') RETURNING "version" /*application='MaasServer'*/[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT /*application='MaasServer'*/[0m
+Migrating to CreateGrowthStrategies (20250224051257)
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN /*application='MaasServer'*/[0m
+  [1m[35m (3.3ms)[0m  [1m[35mCREATE TABLE "growth_strategies" ("id" bigserial primary key, "name" character varying NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL) /*application='MaasServer'*/[0m
+  [1m[35m (0.9ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_growth_strategies_on_name" ON "growth_strategies" ("name") /*application='MaasServer'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20250224051257') RETURNING "version" /*application='MaasServer'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT /*application='MaasServer'*/[0m
+Migrating to CreateManagementStyles (20250224051304)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN /*application='MaasServer'*/[0m
+  [1m[35m (3.6ms)[0m  [1m[35mCREATE TABLE "management_styles" ("id" bigserial primary key, "name" character varying NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL) /*application='MaasServer'*/[0m
+  [1m[35m (0.8ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_management_styles_on_name" ON "management_styles" ("name") /*application='MaasServer'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20250224051304') RETURNING "version" /*application='MaasServer'*/[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT /*application='MaasServer'*/[0m
+Migrating to CreatePreferredWorkCultures (20250224051356)
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN /*application='MaasServer'*/[0m
+  [1m[35m (4.7ms)[0m  [1m[35mCREATE TABLE "preferred_work_cultures" ("id" bigserial primary key, "name" character varying NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL) /*application='MaasServer'*/[0m
+  [1m[35m (0.7ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_preferred_work_cultures_on_name" ON "preferred_work_cultures" ("name") /*application='MaasServer'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20250224051356') RETURNING "version" /*application='MaasServer'*/[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT /*application='MaasServer'*/[0m
+Migrating to CreateDealBreakers (20250224051410)
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN /*application='MaasServer'*/[0m
+  [1m[35m (3.0ms)[0m  [1m[35mCREATE TABLE "deal_breakers" ("id" bigserial primary key, "name" character varying NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL) /*application='MaasServer'*/[0m
+  [1m[35m (1.2ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_deal_breakers_on_name" ON "deal_breakers" ("name") /*application='MaasServer'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20250224051410') RETURNING "version" /*application='MaasServer'*/[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT /*application='MaasServer'*/[0m
+Migrating to CreateUserSettings (20250224051533)
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN /*application='MaasServer'*/[0m
+  [1m[35m (4.8ms)[0m  [1m[35mCREATE TABLE "user_settings" ("id" bigserial primary key, "user_id" bigint NOT NULL, "risk_tolerance" integer DEFAULT 0 NOT NULL, "innovation_style_id" bigint NOT NULL, "decision_making_style_id" bigint NOT NULL, "growth_strategy_id" bigint NOT NULL, "management_style_id" bigint NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, CONSTRAINT "fk_rails_d1371c6356"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+, CONSTRAINT "fk_rails_48a3ba4d48"
+FOREIGN KEY ("innovation_style_id")
+  REFERENCES "innovation_styles" ("id")
+, CONSTRAINT "fk_rails_d742e43816"
+FOREIGN KEY ("decision_making_style_id")
+  REFERENCES "decision_making_styles" ("id")
+, CONSTRAINT "fk_rails_64a4a92ced"
+FOREIGN KEY ("growth_strategy_id")
+  REFERENCES "growth_strategies" ("id")
+, CONSTRAINT "fk_rails_52b62944f1"
+FOREIGN KEY ("management_style_id")
+  REFERENCES "management_styles" ("id")
+) /*application='MaasServer'*/[0m
+  [1m[35m (1.3ms)[0m  [1m[35mCREATE INDEX "index_user_settings_on_user_id" ON "user_settings" ("user_id") /*application='MaasServer'*/[0m
+  [1m[35m (0.7ms)[0m  [1m[35mCREATE INDEX "index_user_settings_on_innovation_style_id" ON "user_settings" ("innovation_style_id") /*application='MaasServer'*/[0m
+  [1m[35m (0.7ms)[0m  [1m[35mCREATE INDEX "index_user_settings_on_decision_making_style_id" ON "user_settings" ("decision_making_style_id") /*application='MaasServer'*/[0m
+  [1m[35m (0.6ms)[0m  [1m[35mCREATE INDEX "index_user_settings_on_growth_strategy_id" ON "user_settings" ("growth_strategy_id") /*application='MaasServer'*/[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE INDEX "index_user_settings_on_management_style_id" ON "user_settings" ("management_style_id") /*application='MaasServer'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20250224051533') RETURNING "version" /*application='MaasServer'*/[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT /*application='MaasServer'*/[0m
+Migrating to CreateUserPreferredWorkCultures (20250224051555)
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN /*application='MaasServer'*/[0m
+  [1m[35m (2.7ms)[0m  [1m[35mCREATE TABLE "user_preferred_work_cultures" ("id" bigserial primary key, "user_id" bigint NOT NULL, "preferred_work_culture_id" bigint NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, CONSTRAINT "fk_rails_6b7dc235a2"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+, CONSTRAINT "fk_rails_a320e258fa"
+FOREIGN KEY ("preferred_work_culture_id")
+  REFERENCES "preferred_work_cultures" ("id")
+) /*application='MaasServer'*/[0m
+  [1m[35m (0.9ms)[0m  [1m[35mCREATE INDEX "index_user_preferred_work_cultures_on_user_id" ON "user_preferred_work_cultures" ("user_id") /*application='MaasServer'*/[0m
+  [1m[35m (0.7ms)[0m  [1m[35mCREATE INDEX "idx_on_preferred_work_culture_id_dfdfedcffa" ON "user_preferred_work_cultures" ("preferred_work_culture_id") /*application='MaasServer'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20250224051555') RETURNING "version" /*application='MaasServer'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT /*application='MaasServer'*/[0m
+Migrating to CreateUserDealBreakers (20250224051614)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='MaasServer'*/[0m
+  [1m[35m (2.8ms)[0m  [1m[35mCREATE TABLE "user_deal_breakers" ("id" bigserial primary key, "user_id" bigint NOT NULL, "deal_breaker_id" bigint NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, CONSTRAINT "fk_rails_abcc202ed1"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+, CONSTRAINT "fk_rails_4b6b45250d"
+FOREIGN KEY ("deal_breaker_id")
+  REFERENCES "deal_breakers" ("id")
+) /*application='MaasServer'*/[0m
+  [1m[35m (0.7ms)[0m  [1m[35mCREATE INDEX "index_user_deal_breakers_on_user_id" ON "user_deal_breakers" ("user_id") /*application='MaasServer'*/[0m
+  [1m[35m (0.7ms)[0m  [1m[35mCREATE INDEX "index_user_deal_breakers_on_deal_breaker_id" ON "user_deal_breakers" ("deal_breaker_id") /*application='MaasServer'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20250224051614') RETURNING "version" /*application='MaasServer'*/[0m
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mCOMMIT /*application='MaasServer'*/[0m
+Migrating to CreateIndustries (20250224051747)
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN /*application='MaasServer'*/[0m
+  [1m[35m (3.8ms)[0m  [1m[35mCREATE TABLE "industries" ("id" bigserial primary key, "name" character varying NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL) /*application='MaasServer'*/[0m
+  [1m[35m (1.1ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_industries_on_name" ON "industries" ("name") /*application='MaasServer'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20250224051747') RETURNING "version" /*application='MaasServer'*/[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT /*application='MaasServer'*/[0m
+Migrating to CreateBuyerTargetIndustries (20250224051816)
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN /*application='MaasServer'*/[0m
+  [1m[35m (2.7ms)[0m  [1m[35mCREATE TABLE "buyer_target_industries" ("id" bigserial primary key, "buyer_id" bigint NOT NULL, "industry_id" bigint NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, CONSTRAINT "fk_rails_ae483b9d31"
+FOREIGN KEY ("buyer_id")
+  REFERENCES "buyers" ("id")
+, CONSTRAINT "fk_rails_b9ff56c9c0"
+FOREIGN KEY ("industry_id")
+  REFERENCES "industries" ("id")
+) /*application='MaasServer'*/[0m
+  [1m[35m (0.7ms)[0m  [1m[35mCREATE INDEX "index_buyer_target_industries_on_buyer_id" ON "buyer_target_industries" ("buyer_id") /*application='MaasServer'*/[0m
+  [1m[35m (1.0ms)[0m  [1m[35mCREATE INDEX "index_buyer_target_industries_on_industry_id" ON "buyer_target_industries" ("industry_id") /*application='MaasServer'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20250224051816') RETURNING "version" /*application='MaasServer'*/[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT /*application='MaasServer'*/[0m
+Migrating to CreateUserDetails (20250224051924)
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN /*application='MaasServer'*/[0m
+  [1m[35m (4.7ms)[0m  [1m[35mCREATE TABLE "user_details" ("id" bigserial primary key, "user_id" bigint NOT NULL, "business_name" character varying NOT NULL, "industry_id" bigint NOT NULL, "annual_revenue" character varying, "number_of_employees" integer, "location" character varying, "business_description" text, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, CONSTRAINT "fk_rails_12e0b3043d"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+, CONSTRAINT "fk_rails_777ad89e0c"
+FOREIGN KEY ("industry_id")
+  REFERENCES "industries" ("id")
+) /*application='MaasServer'*/[0m
+  [1m[35m (0.8ms)[0m  [1m[35mCREATE INDEX "index_user_details_on_user_id" ON "user_details" ("user_id") /*application='MaasServer'*/[0m
+  [1m[35m (1.0ms)[0m  [1m[35mCREATE INDEX "index_user_details_on_industry_id" ON "user_details" ("industry_id") /*application='MaasServer'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20250224051924') RETURNING "version" /*application='MaasServer'*/[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT /*application='MaasServer'*/[0m
+Migrating to CreateUserSessions (20250224053431)
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN /*application='MaasServer'*/[0m
+  [1m[35m (3.6ms)[0m  [1m[35mCREATE TABLE "user_sessions" ("id" bigserial primary key, "user_id" bigint NOT NULL, "token" character varying NOT NULL, "expires_at" timestamp(6) NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, CONSTRAINT "fk_rails_9fa262d742"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+) /*application='MaasServer'*/[0m
+  [1m[35m (0.8ms)[0m  [1m[35mCREATE INDEX "index_user_sessions_on_user_id" ON "user_sessions" ("user_id") /*application='MaasServer'*/[0m
+  [1m[35m (0.6ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_user_sessions_on_token" ON "user_sessions" ("token") /*application='MaasServer'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20250224053431') RETURNING "version" /*application='MaasServer'*/[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT /*application='MaasServer'*/[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(7338183518448170220) /*application='MaasServer'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='MaasServer'*/[0m
