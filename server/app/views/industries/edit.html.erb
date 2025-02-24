@@ -1,0 +1,12 @@
+<% content_for :title, "Editing industry" %>
+
+<h1>Editing industry</h1>
+
+<%= render "form", industry: @industry %>
+
+<br>
+
+<div>
+  <%= link_to "Show this industry", @industry %> |
+  <%= link_to "Back to industries", industries_path %>
+</div>

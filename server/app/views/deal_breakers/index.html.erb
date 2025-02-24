@@ -1,0 +1,16 @@
+<p style="color: green"><%= notice %></p>
+
+<% content_for :title, "Deal breakers" %>
+
+<h1>Deal breakers</h1>
+
+<div id="deal_breakers">
+  <% @deal_breakers.each do |deal_breaker| %>
+    <%= render deal_breaker %>
+    <p>
+      <%= link_to "Show this deal breaker", deal_breaker %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New deal breaker", new_deal_breaker_path %>

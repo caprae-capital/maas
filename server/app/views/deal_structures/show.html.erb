@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @deal_structure %>
+
+<div>
+  <%= link_to "Edit this deal structure", edit_deal_structure_path(@deal_structure) %> |
+  <%= link_to "Back to deal structures", deal_structures_path %>
+
+  <%= button_to "Destroy this deal structure", @deal_structure, method: :delete %>
+</div>

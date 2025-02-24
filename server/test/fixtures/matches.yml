@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user: one
+  buyer: one
+  progress: MyString
+  due_date: 2025-02-24
+
+two:
+  user: two
+  buyer: two
+  progress: MyString
+  due_date: 2025-02-24

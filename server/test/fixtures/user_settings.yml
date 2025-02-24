@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user: one
+  risk_tolerance: 1
+  innovation_style: one
+  decision_making_style: one
+  growth_strategy: one
+  management_style: one
+
+two:
+  user: two
+  risk_tolerance: 1
+  innovation_style: two
+  decision_making_style: two
+  growth_strategy: two
+  management_style: two

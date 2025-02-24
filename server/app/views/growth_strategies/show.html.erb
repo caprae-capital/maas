@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @growth_strategy %>
+
+<div>
+  <%= link_to "Edit this growth strategy", edit_growth_strategy_path(@growth_strategy) %> |
+  <%= link_to "Back to growth strategies", growth_strategies_path %>
+
+  <%= button_to "Destroy this growth strategy", @growth_strategy, method: :delete %>
+</div>

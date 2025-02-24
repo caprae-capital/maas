@@ -1,0 +1,22 @@
+<%= form_with(model: growth_strategy) do |form| %>
+  <% if growth_strategy.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(growth_strategy.errors.count, "error") %> prohibited this growth_strategy from being saved:</h2>
+
+      <ul>
+        <% growth_strategy.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :name, style: "display: block" %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

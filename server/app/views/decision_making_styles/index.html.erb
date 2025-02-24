@@ -1,0 +1,16 @@
+<p style="color: green"><%= notice %></p>
+
+<% content_for :title, "Decision making styles" %>
+
+<h1>Decision making styles</h1>
+
+<div id="decision_making_styles">
+  <% @decision_making_styles.each do |decision_making_style| %>
+    <%= render decision_making_style %>
+    <p>
+      <%= link_to "Show this decision making style", decision_making_style %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New decision making style", new_decision_making_style_path %>

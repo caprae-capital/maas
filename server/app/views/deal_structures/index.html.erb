@@ -1,0 +1,16 @@
+<p style="color: green"><%= notice %></p>
+
+<% content_for :title, "Deal structures" %>
+
+<h1>Deal structures</h1>
+
+<div id="deal_structures">
+  <% @deal_structures.each do |deal_structure| %>
+    <%= render deal_structure %>
+    <p>
+      <%= link_to "Show this deal structure", deal_structure %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New deal structure", new_deal_structure_path %>

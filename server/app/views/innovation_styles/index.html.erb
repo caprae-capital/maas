@@ -1,0 +1,16 @@
+<p style="color: green"><%= notice %></p>
+
+<% content_for :title, "Innovation styles" %>
+
+<h1>Innovation styles</h1>
+
+<div id="innovation_styles">
+  <% @innovation_styles.each do |innovation_style| %>
+    <%= render innovation_style %>
+    <p>
+      <%= link_to "Show this innovation style", innovation_style %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New innovation style", new_innovation_style_path %>

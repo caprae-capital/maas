@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @innovation_style %>
+
+<div>
+  <%= link_to "Edit this innovation style", edit_innovation_style_path(@innovation_style) %> |
+  <%= link_to "Back to innovation styles", innovation_styles_path %>
+
+  <%= button_to "Destroy this innovation style", @innovation_style, method: :delete %>
+</div>

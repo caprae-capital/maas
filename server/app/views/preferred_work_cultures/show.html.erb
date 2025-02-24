@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @preferred_work_culture %>
+
+<div>
+  <%= link_to "Edit this preferred work culture", edit_preferred_work_culture_path(@preferred_work_culture) %> |
+  <%= link_to "Back to preferred work cultures", preferred_work_cultures_path %>
+
+  <%= button_to "Destroy this preferred work culture", @preferred_work_culture, method: :delete %>
+</div>

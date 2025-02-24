@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @deal_breaker %>
+
+<div>
+  <%= link_to "Edit this deal breaker", edit_deal_breaker_path(@deal_breaker) %> |
+  <%= link_to "Back to deal breakers", deal_breakers_path %>
+
+  <%= button_to "Destroy this deal breaker", @deal_breaker, method: :delete %>
+</div>

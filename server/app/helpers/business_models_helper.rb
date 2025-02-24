@@ -1,0 +1,2 @@
+module BusinessModelsHelper
+end

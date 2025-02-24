@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @decision_making_style %>
+
+<div>
+  <%= link_to "Edit this decision making style", edit_decision_making_style_path(@decision_making_style) %> |
+  <%= link_to "Back to decision making styles", decision_making_styles_path %>
+
+  <%= button_to "Destroy this decision making style", @decision_making_style, method: :delete %>
+</div>

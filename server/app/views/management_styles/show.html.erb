@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @management_style %>
+
+<div>
+  <%= link_to "Edit this management style", edit_management_style_path(@management_style) %> |
+  <%= link_to "Back to management styles", management_styles_path %>
+
+  <%= button_to "Destroy this management style", @management_style, method: :delete %>
+</div>
