@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="685eeded-7665-437d-b660-bba9237e4902" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/demo.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eslint.config.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../package-lock.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../postcss.config.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/App.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/components/buyers/BuyerCard.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/components/cim/CIMDocument.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/components/cim/CIMGenerator.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/components/cim/CIMProgress.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/components/cim/InsightCard.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/components/cim/data.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/components/cim/sections/CIMCoverPage.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/components/cim/sections/CIMExecutiveSummary.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/components/cim/sections/CIMFinancialPerformance.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/components/cim/sections/CIMMarketOpportunity.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/components/cim/sections/CIMOperationalExcellence.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/components/cim/sections/CIMStrategicGrowth.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/components/cim/types.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/components/deals/DealCard.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/components/deals/DealDocuments.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/components/deals/DealRoomContent.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/components/deals/DocumentInsights.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/components/filters/FilterPanel.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/components/layout/Sidebar.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/components/matches/MatchesContent.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/components/settings/PersonalitySettings.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/components/settings/SettingsContent.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/components/ui/Notification.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/components/ui/Tabs.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/contexts/ThemeContext.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/data/buyers.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/hooks/useAuth.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/index.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/pages/BuyerQuestionnaire.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/pages/CIMGenerator.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/pages/Dashboard.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/pages/DocumentStore.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/pages/LandingPage.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/pages/LoginPage.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/pages/ProfilePage.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/pages/SellerQuestionnaire.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/pages/SignupPage.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/pages/ToolsPage.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/pages/ValuationTool.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/types/buyer.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/types/deal.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/types/personality.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/utils/dealStages.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/vite-env.d.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../tailwind.config.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../tsconfig.app.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../tsconfig.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../tsconfig.node.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../vite.config.ts" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "associatedIndex": 0
+}]]></component>
+  <component name="ProjectId" id="2tDyY6DSNt3E5yAvrFyYqw0CfIx" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "git-widget-placeholder": "main",
+    "last_opened_file_path": "/Users/hyon/Sites/maas/demo",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-js-predefined-d6986cc7102b-deb605915726-JavaScript-WS-243.22562.112" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="685eeded-7665-437d-b660-bba9237e4902" name="Changes" comment="" />
+      <created>1739900983502</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1739900983502</updated>
+      <workItem from="1739900984690" duration="909000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>
